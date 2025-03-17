@@ -1,7 +1,9 @@
--- CREATE A DATABASE 'DataScienceSalariesProject'
+-- CREATE A DATABASE 'DataScienceSalariesProject.
+-- I created a database that could store our data. This was created in an editor(VS CODE) but with a PostgreSQL extension.
 CREATE DATABASE DatascienceSalariesProject;
 
 -- Create Schema
+-- A schema, which serves as a subfolder was meant to store the Analysis Tables
 CREATE SCHEMA Analysis;
 
 -- Create Table Finaldata into the Schema
@@ -31,20 +33,23 @@ SELECT *
 FROM analysis.finaldata;
 
 -- Maximum Salary
--- Aggregate function
+-- Aggregate function: This query returns the maximum salary in the data field
+
 SELECT MAX(salary_in_usd) AS max_salary
 FROM analysis.finaldata; -- 800,000 usd
 
--- Min Salary
+-- Min Salary: This shows us the minimum salary in the data field according to our dataset.
 SELECT MIN(salary_in_usd) AS min_salary
 FROM analysis.finaldata; -- 15000 usd
 
 -- Jobs with the lowest Salary ( 15000USD)
+-- We're now able to view the job_title,
 SELECT job_title,employment_type,years_of_experience
 FROM analysis.finaldata
 WHERE salary_in_usd=15000; -- data analyst, bi developer, ml developer  & all fulltime with over 3 yrs of experience
 
 -- Checking for Missing Values
+-- The query below checks for missing values.
 
 SELECT job_category, COUNT(*) AS no_count
 FROM analysis.finaldata
